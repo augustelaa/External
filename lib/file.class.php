@@ -22,12 +22,12 @@ class FC{
                 //Se o script chegar aqui é porque o arquivo não existe, fazendo assim lançar uma Exception
                 throw new Exception("Arquivo não existe.");
             }else{
-                //Se o script chegar aqui é porque o arquivo existe, retornando em "1" ou true
+                //Se o script chegar aqui é porque o arquivo existe, retornando em "1" ou true na array
                 return array(true,$file);
             }
             
         }catch(Exception $e){ 
-            //Confirmado que o arquivo não existe a Excetion é lançada, o catch pega a Exception e ele é retornado ao invocador
+            //Confirmado que o arquivo não existe a Excetion é lançada, o catch pega a Exception e ele é retornado ao invocador na array
             return array($e->getMessage(),$file);
         }
         
@@ -45,10 +45,9 @@ class FC{
                 $numeroArquivos = count($this->openedfile);
                 //Verifica se o numero de arquivos na array é maior que -1
                 if($numeroArquivos >= 0){
-                    $numeroArquivos;
                     //Faz um loop para fechar os arquivos automaticamente
                     while($numeroArquivos >= 0){
-                        //Fecha o arquivo conforme é dado seu número (Com @ para evitar mensagens de erro, alguns arquivos podem não existir travando a função.)
+                        //Fecha o arquivo conforme é dado seu número
                         @fclose($this->openedfile[$numeroArquivos]);
                         //Define o numero de arquivos reduzindo um por um, pois cada arquivo é fechado desta forma
                         $numeroArquivos = $numeroArquivos -1;
@@ -89,9 +88,11 @@ class FC{
                     fwrite($handle, $param);
                     return true;
                     }else{
+                        //Faz uma nova Exception pois o arquivo não pode ser aberto
                         throw new Exception("Arquivo não pode ser aberto.");
                     }
                     }catch(Exception $e){
+                        //Retorna a Exception para o invocador
                         return $e->getMessage();
                     }
                 }
@@ -107,9 +108,11 @@ class FC{
                     fwrite($handle, $param);
                     return true;
                     }else{
+                        //Faz uma nova Exception pois o arquivo não pode ser aberto
                         throw new Exception("Arquivo não pode ser aberto.");
                     }
                     }catch(Exception $e){
+                        //Retorna a Exception para o invocador
                         return $e->getMessage();
                     }
             }
@@ -135,7 +138,7 @@ class FC{
                 //Se o script chegar aqui é porque o arquivo não é editavel, fazendo assim lançar uma Exception
                 throw new Exception("Arquivo não editavel.");
             }else{
-                //Se o script chegar aqui é porque o arquivo é editavel, retornando em "1" ou true
+                //Se o script chegar aqui é porque o arquivo é editavel, retornando em "1" ou true 
                 return true;
             }
             
